@@ -2,6 +2,8 @@ apply plugin: 'java'
 
 repositories {
     jcenter()
+    mavenCentral()
+    maven { url "https://repository.apache.org/content/repositories/snapshots/" }
 }
 
 ext {
@@ -14,5 +16,8 @@ ext {
 dependencies {
     compile "org.apache.flink:flink-java:${flinkVersion}"
     compile "org.apache.flink:flink-streaming-java_${scalaBinaryVersion}:${flinkVersion}"
+    compile group: 'org.apache.flink', name: "flink-connector-twitter_${scalaBinaryVersion}", version: "${flinkVersion}"
+    compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.1'
+
 }
 

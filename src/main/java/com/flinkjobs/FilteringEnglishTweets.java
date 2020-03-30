@@ -1,13 +1,12 @@
 package com.flinkjobs;
 
-
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
-import twitter4j.Twitter;
+import twitter4j.TweetEntity;
 
 import java.util.Properties;
 
-public class NumberOfTweetsPerLanguage {
+public class FilteringEnglishTweets {
     public static void main(String[] args) throws Exception {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
@@ -23,3 +22,5 @@ public class NumberOfTweetsPerLanguage {
 
     }
 }
+
+
