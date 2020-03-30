@@ -18,12 +18,7 @@ public class FilteringEnglishTweets {
 
         env.addSource(new TwitterSource(props))
                 .map(new MapToTweet())
-                .filter(new FilterFunction<Tweet>() {
-                    @Override
-                    public boolean filter(final Tweet tweet) throws Exception {
-                        return tweet.language().equals("en");
-                    }
-                })
+                .filter((FilterFunction<Tweet>) tweet -> tweet.language().equals("en"))
                 .print();
 
         env.execute();
