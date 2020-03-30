@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 repositories {
     jcenter()
@@ -12,6 +13,33 @@ ext {
     slf4jVersion = '1.7.7'
     log4jVersion = '1.2.17'
 }
+
+version = "0.0.2"
+group = "com.flinkjobs"
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifact("build/libs/$rootProject.name" + ".jar") {
+                extension 'jar'
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name 'nexus'
+            url "$nexusRepoUrl"
+            credentials {
+                username nexusRepoUser
+                password nexusRepoPassword
+            }
+
+        }
+    }
+}
+
+
 
 dependencies {
     compile "org.apache.flink:flink-java:${flinkVersion}"
