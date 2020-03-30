@@ -1,10 +1,11 @@
 package com.flinkjobs;
 
+import com.flinkjobs.twitterutils.MapToTweet;
+import com.flinkjobs.twitterutils.Tweet;
+import com.flinkjobs.twitterutils.TwitterPropertiesHandler;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
-
-import java.util.Properties;
 
 public class FilteringEnglishTweets {
     public static void main(String[] args) throws Exception {

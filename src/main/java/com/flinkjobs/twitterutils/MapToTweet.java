@@ -1,7 +1,6 @@
-package com.flinkjobs;
+package com.flinkjobs.twitterutils;
 
 import org.apache.flink.api.common.functions.MapFunction;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.JsonNode;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 
 public class MapToTweet implements MapFunction<String, Tweet> {

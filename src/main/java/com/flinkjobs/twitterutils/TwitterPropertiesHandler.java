@@ -1,4 +1,4 @@
-package com.flinkjobs;
+package com.flinkjobs.twitterutils;
 
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
 

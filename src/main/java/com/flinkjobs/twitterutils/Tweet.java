@@ -1,4 +1,4 @@
-package com.flinkjobs;
+package com.flinkjobs.twitterutils;
 
 public class Tweet {
     private String language;
