@@ -9,11 +9,11 @@ public class Tweet {
         this.text = text;
     }
 
-    public String getLanguage() {
+    public String language() {
         return language;
     }
 
-    public String getText() {
+    public String text() {
         return text;
     }
 

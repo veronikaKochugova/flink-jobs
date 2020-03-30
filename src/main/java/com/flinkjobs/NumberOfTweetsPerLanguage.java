@@ -11,7 +11,7 @@ public class NumberOfTweetsPerLanguage {
     public static void main(String[] args) throws Exception {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        Properties props = new Properties();
+        var props = new Properties();
         props.setProperty(TwitterSource.CONSUMER_KEY, "");
         props.setProperty(TwitterSource.CONSUMER_SECRET, "");
         props.setProperty(TwitterSource.TOKEN, "");

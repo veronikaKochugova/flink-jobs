@@ -1,8 +1,8 @@
 package com.flinkjobs;
 
+import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.twitter.TwitterSource;
-import twitter4j.TweetEntity;
 
 import java.util.Properties;
 
@@ -10,13 +10,21 @@ public class FilteringEnglishTweets {
     public static void main(String[] args) throws Exception {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        Properties props = new Properties();
+        var props = new Properties();
         props.setProperty(TwitterSource.CONSUMER_KEY, "");
         props.setProperty(TwitterSource.CONSUMER_SECRET, "");
         props.setProperty(TwitterSource.TOKEN, "");
         props.setProperty(TwitterSource.TOKEN_SECRET, "");
 
-        env.addSource(new TwitterSource(props)).print();
+        env.addSource(new TwitterSource(props))
+                .map(new MapToTweet())
+                .filter(new FilterFunction<Tweet>() {
+                    @Override
+                    public boolean filter(final Tweet tweet) throws Exception {
+                        return tweet.language().equals("en");
+                    }
+                })
+                .print();
 
         env.execute();
 
